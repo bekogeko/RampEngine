@@ -6,7 +6,12 @@ extern Ramp::Application* Ramp::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	printf("Ramp Engine");
+	Ramp::Log::Init();
+
+	RMP_CORE_WARN("Initialized Log!");
+	RMP_INFO("HUGULU MUGULU");
+
+
 	auto app = Ramp::CreateApplication();
 	app->Run();
 	delete app;

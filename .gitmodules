@@ -1,0 +1,3 @@
+[submodule "RampEngine/vendor/spdlog"]
+	path = RampEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
