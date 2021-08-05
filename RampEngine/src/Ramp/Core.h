@@ -10,4 +10,12 @@
 	#error Ramp Engine only support Windows
 #endif
 
+#ifdef RMP_ENABLE_ASSERTS
+	#define RMP_ASSERT(x, ...) { if(!(x)) { RMP_ERROR("Assertion Failed: {0}",__VA_ARGS__); __debugbreak(); } }
+	#define RMP_CORE_ASSERT(x, ...) { if(!(x)) { RMP_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define RMP_ASSERT(x, ...)
+	#define RMP_CORET(x, ...)
+#endif
+
 #define BIT(x) (1 << x)

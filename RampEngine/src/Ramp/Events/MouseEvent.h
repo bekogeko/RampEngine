@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Ramp
 {
 	class RAMP_API MouseMovedEvent : public Event
@@ -22,9 +20,8 @@ namespace Ramp
 			return ss.str();
 		}
 
-		EVENT_CLASS_CATEGORY(MouseMoved)
-		EVENT_CLASS_TYPE(EventCategoryMouse | EventCategoryInput)
-
+		EVENT_CLASS_TYPE(MouseMoved)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_MouseX, m_MouseY;
 	};

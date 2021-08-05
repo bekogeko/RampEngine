@@ -1,3 +1,9 @@
 [submodule "RampEngine/vendor/spdlog"]
 	path = RampEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "vendor/GLFW"]
+	path = vendor/GLFW
+	url = https://github.com/TheCherno/GLFW
+[submodule "RampEngine/vendor/GLFW"]
+	path = RampEngine/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW

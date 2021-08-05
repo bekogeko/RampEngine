@@ -2,8 +2,6 @@
 
 #include "Ramp/Core.h"
 
-#include <string>
-#include <functional>
 
 namespace Ramp
 {
@@ -24,7 +22,7 @@ namespace Ramp
 
 	enum EventCategory
 	{
-		None=0,
+		None						= 0,
 		EventCategoryApplication	= BIT(0),
 		EventCategoryInput			= BIT(1),
 		EventCategoryKeyboard		= BIT(2),
@@ -46,7 +44,7 @@ namespace Ramp
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
-
+		
 		inline bool IsInCategory(EventCategory category)
 		{
 			return GetCategoryFlags() & category;
