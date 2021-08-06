@@ -23,8 +23,22 @@ namespace Ramp
 	
 	void Application::OnEvent(Event& e)
 	{
-		RMP_CORE_INFO(" {0} ", e.ToString());
+
+		EventDispatcher dispatcher(e);
+
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+
+		RMP_CORE_TRACE(" {0} ", e.ToString());
 	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
+	}
+
+
 	
 	
 	
@@ -45,7 +59,7 @@ namespace Ramp
 		while (m_Running)
 		{
 
-			glClearColor(0,1,1,1);
+			glClearColor(0,0,0,1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 
