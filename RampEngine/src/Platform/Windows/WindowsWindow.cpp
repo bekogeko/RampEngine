@@ -5,6 +5,7 @@
 #include "Ramp\Events\KeyEvent.h"
 #include "Ramp\Events\MouseEvent.h"
 
+#include <glad\glad.h>
 
 namespace Ramp
 {
@@ -12,7 +13,7 @@ namespace Ramp
 
 	static void GLFWErrorCallback(int error,const char* description)
 	{
-	//	RMP_CORE_ERROR("RAMP GLFW ERR ({0}) : {1} ",error,description);
+		RMP_CORE_ERROR("RAMP GLFW ERR ({0}) : {1} ",error,description);
 	}
 
 	Window* Window::Create(const WindowProps& props)
@@ -58,6 +59,8 @@ namespace Ramp
 			nullptr
 		);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		RMP_CORE_ASSERT(status,"Failed to initialize GLAD ! ");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

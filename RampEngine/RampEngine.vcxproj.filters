@@ -4,6 +4,9 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\Opengl">
+      <UniqueIdentifier>{5E812C1D-CA0C-9AE1-D31D-1DD63F28F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
@@ -13,8 +16,14 @@
     <Filter Include="Ramp\Events">
       <UniqueIdentifier>{F9BF5BEC-6575-D4E1-EE69-CEB85A1ECBE5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ramp\ImGui">
+      <UniqueIdentifier>{9FDAC15C-8B92-03AA-F499-DC05E0709E9A}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Opengl\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\Opengl</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -40,6 +49,15 @@
     <ClInclude Include="src\Ramp\Events\MouseEvent.h">
       <Filter>Ramp\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Ramp\ImGui\ImGuiLayer.h">
+      <Filter>Ramp\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Ramp\Layer.h">
+      <Filter>Ramp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Ramp\LayerStack.h">
+      <Filter>Ramp</Filter>
+    </ClInclude>
     <ClInclude Include="src\Ramp\Log.h">
       <Filter>Ramp</Filter>
     </ClInclude>
@@ -49,10 +67,22 @@
     <ClInclude Include="src\rmppch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Opengl\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\Opengl</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Ramp\Application.cpp">
+      <Filter>Ramp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Ramp\ImGui\ImGuiLayer.cpp">
+      <Filter>Ramp\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Ramp\Layer.cpp">
+      <Filter>Ramp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Ramp\LayerStack.cpp">
       <Filter>Ramp</Filter>
     </ClCompile>
     <ClCompile Include="src\Ramp\Log.cpp">

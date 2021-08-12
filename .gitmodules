@@ -7,3 +7,9 @@
 [submodule "RampEngine/vendor/GLFW"]
 	path = RampEngine/vendor/GLFW
 	url = https://github.com/TheCherno/GLFW
+[submodule "Ramp/vendor/imgui"]
+	path = Ramp/vendor/imgui
+	url = https://github.com/TheCherno/imgui
+[submodule "RampEngine/vendor/imgui"]
+	path = RampEngine/vendor/imgui
+	url = https://github.com/TheCherno/imgui

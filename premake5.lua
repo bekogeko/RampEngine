@@ -10,10 +10,14 @@ workspace "RampEngine"
 	}
 
 include "RampEngine/vendor/GLFW"
+include "RampEngine/vendor/Glad"
+include "RampEngine/vendor/imgui"
 
 
 IncludeDir = {}
---IncludeDir["GLFW"] = "RampEngine/vendor/GLFW/include"
+IncludeDir["GLFW"] = "RampEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "RampEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "RampEngine/vendor/imgui"
 
 
 
@@ -36,12 +40,17 @@ project "RampEngine"
 	includedirs{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/vendor/GLFW/include/"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 	--RampEngine\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib
 	links{
-		"opengl32.lib",
-		"GLFW"
+		
+		"GLFW",
+		"Glad",
+		"ImGui",
+		"opengl32.lib"
 	}
 
 
@@ -53,7 +62,8 @@ project "RampEngine"
 		defines{
 			"RMP_PLATFORM_WINDOWS",
 			"RMP_BUILD_DLL",
-			"RMP_ENABLE_ASSERTS"
+			"RMP_ENABLE_ASSERTS",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands{
@@ -62,12 +72,15 @@ project "RampEngine"
 
 	filter "configurations:Debug"
 		defines "RMP_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	filter "configurations:Release"
 		defines "RMP_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 	filter "configurations:Dist"
 		defines "RMP_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 
@@ -104,10 +117,13 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "RMP_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	filter "configurations:Release"
 		defines "RMP_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 	filter "configurations:Dist"
 		defines "RMP_DIST"
+		buildoptions "/MD"
 		optimize "On"
