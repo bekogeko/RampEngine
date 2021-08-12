@@ -11,7 +11,7 @@ public:
 
 	void OnUpdate() override
 	{
-		RMP_INFO("ExampleLayer::Update");
+		//RMP_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(Ramp::Event& ev) override
