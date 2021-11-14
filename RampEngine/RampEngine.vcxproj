@@ -162,9 +162,11 @@
     <ClInclude Include="src\Ramp\Events\MouseEvent.h" />
     <ClInclude Include="src\Ramp\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Ramp\input.h" />
+    <ClInclude Include="src\Ramp\KeyCodes.h" />
     <ClInclude Include="src\Ramp\Layer.h" />
     <ClInclude Include="src\Ramp\LayerStack.h" />
     <ClInclude Include="src\Ramp\Log.h" />
+    <ClInclude Include="src\Ramp\MouseButtonCodes.h" />
     <ClInclude Include="src\Ramp\Window.h" />
     <ClInclude Include="src\rmppch.h" />
   </ItemGroup>

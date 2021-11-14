@@ -65,12 +65,6 @@ namespace Ramp
 
 	void Application::Run()
 	{
-		//WindowResizeEvent e(1280,720);// evet biliyom yil 2021 ama hala 720 p ekran acanlar var evet olabilir cokda yargilamamak lazim
-		//MouseMovedEvent ms_e(10,30
-		//RMP_CORE_FATAL(e.ToString());//hipito hopito bu olayi benim saheser fonksiyonum birazdan ekrana yazdiriyo
-		//RMP_CORE_FATAL(ms_e.ToString());//hipito hopito bu olayi benim saheser fonksiyonum birazdan ekrana yazdiriyo
-		////RMP_CORE_TRACE("SLM CNM");//hipito hopito bu olayi benim saheser fonksiyonum birazdan ekrana yazdiriyo
-
 		//bool as = glfwWindowShouldClose((GLFWwindow)m_Window);
 		while (m_Running)
 		{
@@ -82,8 +76,7 @@ namespace Ramp
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
-			auto [x, y] = Input::GetMousePosition();
-			RMP_CORE_TRACE("{0} , {1}",x,y);
+
 
 			m_Window->OnUpdate();
 
