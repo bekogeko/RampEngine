@@ -30,4 +30,3 @@ namespace Ramp
 #define RMP_WARN(...)      ::Ramp::Log::GetClientLogger()->warn(__VA_ARGS__);
 #define RMP_ERROR(...)     ::Ramp::Log::GetClientLogger()->error(__VA_ARGS__);
 #define RMP_FATAL(...)     ::Ramp::Log::GetClientLogger()->critical(__VA_ARGS__);
-

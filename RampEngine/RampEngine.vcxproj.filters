@@ -65,6 +65,8 @@
       <Filter>Ramp</Filter>
     </ClInclude>
     <ClInclude Include="src\rmppch.h" />
+    <ClInclude Include="src\Ramp\input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Opengl\ImGuiOpenGLRenderer.cpp">
@@ -89,5 +91,6 @@
       <Filter>Ramp</Filter>
     </ClCompile>
     <ClCompile Include="src\rmppch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

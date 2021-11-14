@@ -88,6 +88,7 @@ namespace Ramp
 		//TEMPORARY: just for demostration purposes
 		ImGui::ShowDemoWindow(&show);
 
+		
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData()); 
 	}

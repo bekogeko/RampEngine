@@ -2,13 +2,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 workspace "RampEngine"
 	architecture "x64"
-	startproject "Sandbox"
-
 	configurations{
 		"Debug",
 		"Release",
 		"Dist"
 	}
+	startproject "Sandbox"
 
 include "RampEngine/vendor/GLFW"
 include "RampEngine/vendor/Glad"
@@ -22,11 +21,11 @@ IncludeDir["ImGui"] = "RampEngine/vendor/imgui"
 
 
 
-
-project "RampEngine"
+project "RampEngine" 
 	location "RampEngine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -57,7 +56,6 @@ project "RampEngine"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines{
@@ -73,15 +71,15 @@ project "RampEngine"
 
 	filter "configurations:Debug"
 		defines "RMP_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	filter "configurations:Release"
 		defines "RMP_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 	filter "configurations:Dist"
 		defines "RMP_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 
@@ -89,6 +87,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -117,13 +116,13 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "RMP_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	filter "configurations:Release"
 		defines "RMP_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 	filter "configurations:Dist"
 		defines "RMP_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
