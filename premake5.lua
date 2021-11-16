@@ -9,10 +9,6 @@ workspace "RampEngine"
 	}
 	startproject "Sandbox"
 
-include "RampEngine/vendor/GLFW"
-include "RampEngine/vendor/Glad"
-include "RampEngine/vendor/imgui"
-
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "RampEngine/vendor/GLFW/include"
@@ -20,13 +16,17 @@ IncludeDir["Glad"] = "RampEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "RampEngine/vendor/imgui"
 IncludeDir["glm"] = "RampEngine/vendor/glm"
 
+include "RampEngine/vendor/GLFW"
+include "RampEngine/vendor/Glad"
+include "RampEngine/vendor/imgui"
 
 
 project "RampEngine" 
 	location "RampEngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -40,6 +40,11 @@ project "RampEngine"
 		"%{prj.name}/vendor/glm/glm/**.hpp", 
 		"%{prj.name}/vendor/glm/glm/**.inl", 
 	}
+
+	defines{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	includedirs{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
@@ -58,42 +63,34 @@ project "RampEngine"
 
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines{
 			"RMP_PLATFORM_WINDOWS",
 			"RMP_BUILD_DLL",
-			"RMP_ENABLE_ASSERTS",
 			"GLFW_INCLUDE_NONE",
-			
-			
-			
-		}
-
-		postbuildcommands{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
 	filter "configurations:Debug"
 		defines "RMP_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 	filter "configurations:Release"
 		defines "RMP_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 	filter "configurations:Dist"
 		defines "RMP_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -103,9 +100,11 @@ project "Sandbox"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/"
 	}
+
 	includedirs{
 		"RampEngine/vendor/spdlog/include",
 		"RampEngine/src",
+		"RampEngine/vendor",
 		"%{IncludeDir.glm}" 
 	}
 
@@ -115,26 +114,21 @@ project "Sandbox"
 
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines{
 			"RMP_PLATFORM_WINDOWS"
 		}
-		
-		linkoptions{
-			"/NODEFAULTLIB:MSVCRT.lib"
-		}
 
 	filter "configurations:Debug"
 		defines "RMP_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 	filter "configurations:Release"
 		defines "RMP_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 	filter "configurations:Dist"
 		defines "RMP_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
