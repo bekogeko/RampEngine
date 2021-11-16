@@ -1,5 +1,6 @@
 #include <Ramp.h>
 
+//#include "imgui/imgui.h"
 
 class ExampleLayer : public Ramp::Layer
 {
@@ -18,9 +19,13 @@ public:
 		
 	}
 
-	void OnEvent(Ramp::Event& ev) override
+	/*virtual void OnImGuiRender() override
 	{
-	}
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
+	}*/
+
 
 };
 
@@ -29,12 +34,11 @@ class Sandbox : public Ramp::Application
 public:
 	Sandbox()
 	{
+
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Ramp::ImGuiLayer());
 	}
 	~Sandbox()
 	{
-		RMP_LOG("Sandbox PUBG");
 	}
 
 private:

@@ -1,10 +1,11 @@
 #pragma once
 #include "Core.h"
-
 #include "Window.h"
-#include "LayerStack.h"
-#include "Events\Event.h"
-#include "Events\ApplicationEvent.h"
+#include "Ramp/LayerStack.h"
+#include "Ramp/Events/Event.h"
+#include "Ramp/Events/ApplicationEvent.h"
+
+#include "ImGui/ImGuiLayer.h"
 
 namespace Ramp
 {
@@ -28,6 +29,7 @@ namespace Ramp
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 		static Application* s_Instance;

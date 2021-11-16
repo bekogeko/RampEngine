@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Ramp\Layer.h"
+
+// its looks like there is no need to include these
+
 #include "Ramp\Events\ApplicationEvent.h"
 #include "Ramp\Events\KeyEvent.h"
 #include "Ramp\Events\MouseEvent.h"
@@ -8,31 +11,23 @@
 
 namespace Ramp
 {
-	class RAMP_API ImGuiLayer : public Layer 
+	class RAMP_API ImGuiLayer : public Layer
 	{
 	public:
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& event);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
+
+
+		void Begin();
+		void End();
+
 	private:
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-		bool OnMouseMovedEvent(MouseMovedEvent& e);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
 
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		bool OnKeyTypedEvent(KeyTypedEvent& e);
-
-		bool OnWindowResizeEvent(WindowResizeEvent& e);
-
-
-		
-		float m_Time =0.0f;
+		float m_Time = 0.0f;
 
 	};
 }

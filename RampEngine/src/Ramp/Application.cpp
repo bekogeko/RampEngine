@@ -6,9 +6,11 @@
 #include "Ramp/Events/ApplicationEvent.h"
 #include "Ramp/Events/MouseEvent.h"
 
+#include "input.h"
+
 #include <Glad\glad.h>
 
-#include "input.h"
+
 
 namespace Ramp
 {
@@ -18,31 +20,31 @@ namespace Ramp
 
 	Application::Application()
 	{
-		RMP_CORE_ASSERT(!s_Instance,"Application already exists!");
+		RMP_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT_FN(OnEvent));
 
+
+		m_ImGuiLayer = new ImGuiLayer();
+
+		PushLayer(m_ImGuiLayer);
 	}
 
-	Application::~Application()
-	{
-
-	}
+	Application::~Application() {}
 
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
-		layer->OnAttach();
 	}
+
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverlay(overlay);
-		overlay->OnAttach();
 	}
-	
-	
+
+
 	void Application::OnEvent(Event& e)
 	{
 
@@ -50,9 +52,9 @@ namespace Ramp
 
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		
 
-		for ( auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
 			if (e.Handled)
@@ -69,13 +71,17 @@ namespace Ramp
 		while (m_Running)
 		{
 
-			glClearColor(0.12,0.27,0.27,1);
+			glClearColor(0.12f, 0.27f, 0.27f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
-			
-			
+
+
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 
 			m_Window->OnUpdate();
