@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "spdlog\spdlog.h"
+#include "spdlog\fmt\ostr.h"
 
 namespace Ramp
 {
@@ -25,7 +26,7 @@ namespace Ramp
 #define RMP_CORE_FATAL(...) ::Ramp::Log::GetCoreLogger()->critical(__VA_ARGS__);
 
 #define RMP_TRACE(...)     ::Ramp::Log::GetClientLogger()->trace(__VA_ARGS__);
-#define RMP_DEBUG(...)     ::Ramp::Log::GetClientLogger()->debug(__VA_ARGS__);
+#define RMP_LOG(...)     ::Ramp::Log::GetClientLogger()->debug(__VA_ARGS__);
 #define RMP_INFO(...)      ::Ramp::Log::GetClientLogger()->info(__VA_ARGS__);
 #define RMP_WARN(...)      ::Ramp::Log::GetClientLogger()->warn(__VA_ARGS__);
 #define RMP_ERROR(...)     ::Ramp::Log::GetClientLogger()->error(__VA_ARGS__);

@@ -7,19 +7,19 @@ public:
 	ExampleLayer()
 		: Layer("Example")
 	{
+
 	}
 
 	void OnUpdate() override
 	{
 		if (Ramp::Input::isKeyPressed(RMP_KEY_TAB))
-			RMP_DEBUG("TAB IS PRESSED");
+			RMP_LOG("TAB IS PRESSED");
 		
 		
 	}
 
 	void OnEvent(Ramp::Event& ev) override
 	{
-
 	}
 
 };
@@ -34,7 +34,7 @@ public:
 	}
 	~Sandbox()
 	{
-		RMP_DEBUG("Sandbox PUBG");
+		RMP_LOG("Sandbox PUBG");
 	}
 
 private:

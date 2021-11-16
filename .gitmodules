@@ -7,3 +7,6 @@
 [submodule "RampEngine/vendor/imgui"]
 	path = RampEngine/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "RampEngine/vendor/glm"]
+	path = RampEngine/vendor/glm
+	url = https://github.com/g-truc/glm/

@@ -38,16 +38,11 @@ IMGUI_IMPL_API bool     ImGui_ImplOpenGL3_CreateDeviceObjects();
 IMGUI_IMPL_API void     ImGui_ImplOpenGL3_DestroyDeviceObjects();
 
 
-
-
-
-
 //
 //
 // Not Seen on Tutorials
 // 
 //
-
 
 //
 //// Specific OpenGL ES versions

@@ -18,6 +18,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "RampEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "RampEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "RampEngine/vendor/imgui"
+IncludeDir["glm"] = "RampEngine/vendor/glm"
 
 
 
@@ -35,18 +36,20 @@ project "RampEngine"
 
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp", 
+		"%{prj.name}/vendor/glm/glm/**.inl", 
 	}
 	includedirs{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 	--RampEngine\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib
 	links{
-		
 		"GLFW",
 		"Glad",
 		"ImGui",
@@ -62,7 +65,10 @@ project "RampEngine"
 			"RMP_PLATFORM_WINDOWS",
 			"RMP_BUILD_DLL",
 			"RMP_ENABLE_ASSERTS",
-			"GLFW_INCLUDE_NONE"
+			"GLFW_INCLUDE_NONE",
+			
+			
+			
 		}
 
 		postbuildcommands{
@@ -94,15 +100,17 @@ project "Sandbox"
 
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/"
 	}
 	includedirs{
 		"RampEngine/vendor/spdlog/include",
-		"RampEngine/src"
+		"RampEngine/src",
+		"%{IncludeDir.glm}" 
 	}
 
 	links{
-		"RampEngine"
+		"RampEngine" 
 	}
 
 
@@ -112,6 +120,10 @@ project "Sandbox"
 
 		defines{
 			"RMP_PLATFORM_WINDOWS"
+		}
+		
+		linkoptions{
+			"/NODEFAULTLIB:MSVCRT.lib"
 		}
 
 	filter "configurations:Debug"

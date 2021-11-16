@@ -27,7 +27,7 @@ namespace Ramp
 
 		inline int GetRepeatCount()const { return m_RepeatCount; }
 
-		std::string ToString()const override
+		std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << " repeats)";
@@ -65,7 +65,7 @@ namespace Ramp
 		{
 		}
 
-		std::string ToString()const override
+		std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "KeyTypedEvent: " << m_KeyCode;
